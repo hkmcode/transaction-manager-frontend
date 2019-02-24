@@ -41,6 +41,7 @@ import { AddUserComponent } from './admin-dashboard/add-user/add-user.component'
 import { SettingsComponent } from './admin-dashboard/settings/settings.component';
 import { ManageUserComponent } from './admin-dashboard/manage-user/manage-user.component';
 import { ManageCompanyComponent } from './admin-dashboard/manage-company/manage-company.component';
+import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
 
 
 
@@ -96,7 +97,8 @@ import { ManageCompanyComponent } from './admin-dashboard/manage-company/manage-
     MatNativeDateModule,
     MatCardModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgProgressModule
   ],
   entryComponents: [
     AddDialogComponent,
@@ -119,7 +121,8 @@ import { ManageCompanyComponent } from './admin-dashboard/manage-company/manage-
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
-  }
+  },
+  { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
