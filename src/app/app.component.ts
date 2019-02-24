@@ -17,7 +17,7 @@ constructor(private _dataService: DataService) {
 }
 
 ngOnInit() {
-  this.getTransactioTypes();
+  //this.getTransactioTypes();
 }
 
 getTransactioTypes(): void {
