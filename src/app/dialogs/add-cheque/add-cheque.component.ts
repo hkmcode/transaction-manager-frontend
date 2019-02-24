@@ -59,9 +59,9 @@ this.dialogRef.close();
 }
 
 
-addNew(issue: Issue) {
+addNew() {
   const dialogRef = this.dialog.open(AddCustomerComponent, {
-    data: {issue: issue }
+    //data: {issue: issue }
   });
 }
 

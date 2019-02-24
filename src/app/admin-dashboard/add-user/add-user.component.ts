@@ -49,6 +49,10 @@ export class AddUserComponent implements OnInit {
         });
 }
 
+submit(){
+
+}
+
   onSubmit() {
     console.log(this.userForm.value);
     this.loading = true;

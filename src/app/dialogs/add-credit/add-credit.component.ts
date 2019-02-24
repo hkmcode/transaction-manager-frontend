@@ -75,9 +75,9 @@ displayFn(customer: Customer) {
   if (customer) { return customer.name; }
 }
 
-addNew(issue: Issue) {
+addNew() {
   const dialogRef = this.dialog.open(AddCustomerComponent, {
-    data: {issue: issue }
+    //data: {issue: issue }
   });
 }
 

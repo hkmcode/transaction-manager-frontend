@@ -50,7 +50,7 @@ editUser(row: any): void {
   });
 }
 
-addUser(row: any): void {
+addUser(): void {
   const dialogRef = this.dialog.open(AddUserComponent, {
       height: '70%',
       width: '40%',
@@ -63,6 +63,14 @@ addUser(row: any): void {
       }
 
   });
+}
+
+
+applyFilter(filterValue: string) {
+  filterValue = filterValue.trim(); // Remove whitespace
+  filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+  this.user_dataSource.filter = filterValue;
+  //this.credit_daily_dataSource.filter = filterValue;
 }
 
 }

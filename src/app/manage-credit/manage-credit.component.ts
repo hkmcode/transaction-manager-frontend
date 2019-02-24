@@ -48,9 +48,9 @@ export class ManageCreditComponent implements OnInit {
     this.loadData();
   }
 
-  addNew(issue: Issue) {
+  addNew() {
     const dialogRef = this.dialog.open(AddCreditComponent, {
-      data: {issue: issue }
+     // data: {issue: issue }
     });
 
     dialogRef.afterClosed().subscribe(result => {

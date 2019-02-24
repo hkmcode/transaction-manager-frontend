@@ -11,7 +11,7 @@
 
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngIf="loading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
-      <ng-container *ngIf="!isLoading">
+      <ng-container *ngIf="!loading">
         <mat-option *ngFor="let user of filteredUsers" [value]="user">
           <span>{{ user.name }}</span>
           <small> | PH: {{user.phone}}</small>

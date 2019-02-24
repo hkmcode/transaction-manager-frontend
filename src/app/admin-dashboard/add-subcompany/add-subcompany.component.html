@@ -1,7 +1,7 @@
 <div class="container">
   <h3 mat-dialog-title>Add new Sub Company</h3>
 
-  <form class="mat-dialog-content" (ngSubmit)="onSubmit"  [formGroup]='companyForm'>
+  <form class="mat-dialog-content" (ngSubmit)="onSubmit()"  [formGroup]='companyForm'>
 
     <div class="form">
         <mat-form-field color="accent">
@@ -32,7 +32,7 @@
 
     <div mat-dialog-actions>
       <button mat-button [type]="submit" [mat-dialog-close]="1" (click)="onSubmit()">Save</button>
-      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+      <!-- <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button> -->
     </div>
   </form>
 </div>

@@ -46,9 +46,9 @@ export class ManageChequeComponent implements OnInit {
     this.loadData();
   }
 
-  addNew(issue: Issue) {
+  addNew() {
     const dialogRef = this.dialog.open(AddChequeComponent, {
-      data: {issue: issue }
+      //data: {issue: issue }
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -19,15 +19,15 @@ export class SettingsComponent implements OnInit {
 
 
 
-  addSubCompany(issue: Issue) {
+  addSubCompany() {
     const dialogRef = this.dialog.open(AddSubcompanyComponent, {
-      data: {issue: issue }
+     // data: {issue: issue }
     });
   }
 
-  addUser(issue: Issue) {
+  addUser() {
     const dialogRef = this.dialog.open(AddUserComponent, {
-      data: {issue: issue }
+     // data: {issue: issue }
     });
   }
 

@@ -42,6 +42,10 @@ export class AddSubcompanyComponent implements OnInit {
     });
   }
 
+  submit(){
+
+  }
+
   onSubmit() {
     console.log(this.companyForm.value);
     this.loading = true;

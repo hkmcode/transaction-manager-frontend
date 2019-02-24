@@ -52,7 +52,7 @@ editCompany(row: any): void {
   });
 }
 
-addCompany(row: any): void {
+addCompany(): void {
   const dialogRef = this.dialog.open(AddSubcompanyComponent, {
       //width: '40%',
   });
@@ -64,6 +64,13 @@ addCompany(row: any): void {
       }
 
   });
+}
+
+applyFilter(filterValue: string) {
+  filterValue = filterValue.trim(); // Remove whitespace
+  filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+  this.company_dataSource.filter = filterValue;
+  //this.credit_daily_dataSource.filter = filterValue;
 }
 
 }
