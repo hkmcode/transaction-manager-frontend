@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Customer, ICustomerResponse } from './../customer';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
@@ -5,9 +6,12 @@ import {Issue} from '../models/issue';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { catchError, tap, retry, map } from 'rxjs/operators';
 
+
 @Injectable()
 export class DataService {
-  private readonly API_URL = 'http://localhost:8000/api';
+  //private readonly API_URL = 'http://localhost:8000/api';
+   API_URL = environment.apiUrl;
+
 
   dataChange: BehaviorSubject<Issue[]> = new BehaviorSubject<Issue[]>([]);
   // Temporarily stores data from dialogs

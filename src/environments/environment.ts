@@ -6,6 +6,7 @@
 export const environment = {
   production: false,
   //apiUrl: 'http://ec2-13-233-168-59.ap-south-1.compute.amazonaws.com/api'
-  apiUrl: 'http://localhost:8000/api'
+  //apiUrl: 'http://localhost:8000/api',
+  apiUrl: 'https://agile-brushlands-35300.herokuapp.com/api'
 
 }
