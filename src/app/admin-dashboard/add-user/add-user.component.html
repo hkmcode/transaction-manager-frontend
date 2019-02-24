@@ -1,0 +1,50 @@
+<div class="container">
+  <h3 mat-dialog-title>Add new User</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="onSubmit"  [formGroup]='userForm'>
+
+    <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #inputstate class="form-control" placeholder="name"  name="name" formControlName='name' maxlength="10" required >
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+        </mat-form-field>
+      </div>
+
+
+      <div class="form">
+        <mat-form-field>
+          <mat-select placeholder="Company" formControlName='company_id'>
+            <mat-option *ngFor="let company of companies" [value]="company.id">
+              {{company.company_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        </div>
+
+        <div class="form">
+          <mat-form-field color="accent">
+            <input matInput #inputstate class="form-control" placeholder="Phone"  name="phone" formControlName='phone' maxlength="10" required >
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+        </div>
+
+
+        <div class="form">
+          <mat-form-field color="accent">
+
+        <input  matInput  type="password" placeholder="Password" name="password" formControlName='password'>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+        </div>
+
+
+
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [mat-dialog-close]="1" (click)="onSubmit()">Save</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,75 @@
+<div class="container">
+  <h3 mat-dialog-title>Edit Cheque Transaction</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="onSubmit"  [formGroup]='chequeForm'>
+
+<div class="form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Choose a Customer" [matAutocomplete]="auto" formControlName='customer'>
+  </mat-form-field>
+  <!-- <span>Your choice is: {{chequeForm.get('customer').value | json}}</span> -->
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngIf="loading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+    <ng-container *ngIf="!isLoading">
+      <mat-option *ngFor="let user of filteredUsers" [value]="user">
+        <span>{{ user.name }}</span>
+        <small> | PH: {{user.phone}}</small>
+      </mat-option>
+    </ng-container>
+  </mat-autocomplete>
+</div>
+
+
+
+    <!--Textarea for demo purposes-->
+    <!-- <div class="form">
+      <mat-form-field color="accent">
+        <textarea matInput #input class="form-control" placeholder="Cheque Number" [(ngModel)]="data.title" name="title" required ></textarea>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    </div> -->
+
+    <!--Contains mat-hint for characters count and has maxLengt set-->
+
+
+      <div class="form">
+          <mat-form-field color="accent">
+            <input matInput #inputstate class="form-control" placeholder="Amount"  name="amount" formControlName='Amount' maxlength="10" required >
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="form">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName='due_date' placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div>
+
+    <!-- <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="Url" [(ngModel)]="data.url" name="url">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="Created at" [(ngModel)]="data.created_at" name="created_at">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="Updated at" [(ngModel)]="data.updated_at" name="updated_at">
+      </mat-form-field>
+    </div> -->
+
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [mat-dialog-close]="1" (click)="onSubmit()">Save</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

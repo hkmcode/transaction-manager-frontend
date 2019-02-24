@@ -1,0 +1,249 @@
+
+<div class="row">
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3>{{total_cheque_count}}</h3>
+
+        <p>Total Pending Cheques</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3>{{total_cheque_count_daily}}</h3>
+
+        <p>Total Pending Cheques Today</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3>{{overall_credit_total}}</h3>
+
+        <p>Total Credit Amount</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3>{{daily_credit_total}}</h3>
+
+        <p>Total Credit Amount Today</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+    </div>
+  </div>
+  <!-- ./col -->
+</div>
+
+
+
+<div class="container">
+
+  <mat-toolbar color="primary">
+    <span>Collection</span>
+    <span class="spacer"></span>
+  </mat-toolbar>
+
+  <form class="m-form m-form--label-align-right" [formGroup]='collectionForm'>
+    <div class="m-form__section m-form__section--first">
+      <div class="example-container mat-elevation-z8" style="padding-top: 10px;">
+        <div class="example-header" style="padding-left: 10px;padding-right: 10px;">
+          <mat-form-field>
+            <input matInput (keyup.enter)="addCollection($event)" placeholder="Add Collection" formControlName='amount'>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="main_container">
+
+<div class="container">
+
+  <mat-toolbar color="primary">
+    <span>Pending Cheques Today</span>
+    <span class="spacer"></span>
+  </mat-toolbar>
+
+  <form class="m-form m-form--label-align-right">
+    <div class="m-form__section m-form__section--first">
+      <div class="example-container mat-elevation-z8" style="padding-top: 10px;">
+        <div class="example-header" style="padding-left: 10px;padding-right: 10px;">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+          </mat-form-field>
+        </div>
+
+        <table mat-table [dataSource]="cheque_daily_dataSource" matSort class="mat-elevation-z8">
+          <!--
+<ng-container matColumnDef="id">
+<th mat-header-cell *matHeaderCellDef> Id </th>
+<td mat-cell *matCellDef="let element"> {{element.id}} </td>
+</ng-container> -->
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="customer_name">
+            <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.customer_name}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="cheque_number">
+            <th mat-header-cell *matHeaderCellDef> Cheque Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.cheque_number}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Amount">
+            <th mat-header-cell *matHeaderCellDef> Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.Amount}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="due_date">
+            <th mat-header-cell *matHeaderCellDef> Due Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.due_date}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+              Clear
+            </mat-header-cell>
+
+            <mat-cell *matCellDef="let row; let i=index;">
+
+              <label class="switch">
+                  <input type="checkbox" (change)="setClear(row,$event)" value="None" id="roundedTwo" name="check" [checked]="row.isCleared==1 ? true : false" />
+                  <span class="slider round"></span>
+              </label>
+            </mat-cell>
+          </ng-container>
+
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedChequeColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedChequeColumns;"></tr>
+
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+
+
+
+    </div>
+  </form>
+</div>
+
+
+
+
+<div class="container">
+
+  <mat-toolbar color="primary">
+    <span>Pending Credit Amounts Today</span>
+    <span class="spacer"></span>
+  </mat-toolbar>
+
+  <form class="m-form m-form--label-align-right">
+    <div class="m-form__section m-form__section--first">
+      <div class="example-container mat-elevation-z8" style="padding-top: 10px;">
+        <div class="example-header" style="padding-left:10px;padding-right: 10px;">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+          </mat-form-field>
+        </div>
+
+        <table mat-table [dataSource]="credit_daily_dataSource" matSort class="mat-elevation-z8">
+          <!--
+        <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container> -->
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="customer_name">
+            <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.customer_name}} </td>
+          </ng-container>
+
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Amount">
+            <th mat-header-cell *matHeaderCellDef> Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.Amount}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="due_date">
+            <th mat-header-cell *matHeaderCellDef> Due Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.due_date}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+              Clear
+            </mat-header-cell>
+
+            <mat-cell *matCellDef="let row; let i=index;">
+
+              <label class="switch">
+                  <input type="checkbox" (change)="setClear(row,$event)" value="None" id="roundedTwo" name="check" [checked]="row.isCleared==1 ? true : false" />
+                  <span class="slider round"></span>
+              </label>
+            </mat-cell>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedCreditColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedCreditColumns;"></tr>
+
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+
+
+
+    </div>
+  </form>
+</div>
+
+</div>

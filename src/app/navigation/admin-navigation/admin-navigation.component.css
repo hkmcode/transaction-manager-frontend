@@ -1,0 +1,30 @@
+.example-container {
+  height: 50%;
+  margin: 0,10px,10px,10px;
+}
+
+.side-nav{
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  min-width: 230px;
+  box-shadow: 6px 0 6px rgba(0,0,0,.1);
+}
+
+.side-nav a{
+font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+font-size: 17px;
+font-weight: 700;
+margin-left: 14px;
+transition: background-color .2s;
+text-transform: uppercase;
+padding-top: 19px;
+}
+
+
+.side-nav-content{
+  padding:30px;
+  height:500px;
+}

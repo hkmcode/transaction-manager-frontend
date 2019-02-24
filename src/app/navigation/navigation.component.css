@@ -1,0 +1,45 @@
+.example-container {
+  height: 50%;
+  margin: 0,10px,10px,10px;
+}
+
+.side-nav{
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  min-width: 230px;
+  box-shadow: 6px 0 6px rgba(0,0,0,.1);
+
+}
+
+.side-nav a span{
+  width: auto;
+  height: 24px;
+  overflow: hidden;
+  font-size: 1rem;
+  box-sizing: content-box;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.5em;
+  white-space: nowrap;
+  padding-left: 16px;
+  text-overflow: ellipsis;
+  padding-right: 16px;
+  margin-top: 1.5em;
+  margin: 0 7px 12px;
+}
+
+
+.side-nav-content{
+  padding:30px;
+  height:100%;
+}
+
+.active-list-item {
+  color: #fff !important; /* Note: You could also use a custom theme */
+  font-weight: bold !important;
+  background:#3F51B5 !important;
+}
+

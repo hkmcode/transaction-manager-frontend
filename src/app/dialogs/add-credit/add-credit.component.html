@@ -1,0 +1,46 @@
+<div class="container">
+    <h3 mat-dialog-title>Add new Credit</h3>
+
+    <form class="mat-dialog-content" (ngSubmit)="onSubmit" [formGroup]='creditForm'>
+
+      <div class="form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Choose a Customer" [matAutocomplete]="auto" formControlName='customer'>
+        </mat-form-field>
+        <!-- <span>Your choice is: {{creditForm.get('customer').value | json}}</span> -->
+
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngIf="loading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+          <ng-container *ngIf="!isLoading">
+            <mat-option *ngFor="let user of filteredUsers" [value]="user">
+              <span>{{ user.name }}</span>
+              <small> | PH: {{user.phone}}</small>
+            </mat-option>
+          </ng-container>
+        </mat-autocomplete>
+        <button mat-fab color="accent" (click)="addNew()">Add</button>
+      </div>
+
+
+        <div class="form">
+            <mat-form-field color="accent">
+              <input matInput #inputstate class="form-control" placeholder="Amount" formControlName='amount' name="state" maxlength="10" required >
+              <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+              <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="form">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" formControlName='due_date' placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            </div>
+
+      <div mat-dialog-actions>
+        <button mat-button [type]="submit"  [mat-dialog-close]="1" (click)="onSubmit()">Save</button>
+        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>
