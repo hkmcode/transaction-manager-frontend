@@ -11,7 +11,6 @@
 README.md
 package-lock.json
 .angular-cli.json
-environment.ts
 .vscode
 
 # IDEs and editors
